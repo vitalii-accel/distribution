@@ -5,8 +5,8 @@ import { LeadDistribution } from '../interfaces/lead-distribution';
 
 @Injectable()
 export class DistributionService {
-  // private managers = [9204711, 9413975];
-  private managers = [9413975];
+  private managers = [9204711, 9413975];
+  // private managers = [9413975];
   private selectedIndex = 0;
 
   constructor(private accountService: AccountsService) {}
@@ -16,7 +16,7 @@ export class DistributionService {
     const { data: result } = await api.patch(`/api/v4/leads/${leads[0].id}`, {
       responsible_user_id: this.getManagerId(),
     });
-    console.log('Result: ', result);
+    return result;
   }
 
   private getManagerId() {

@@ -16,11 +16,11 @@ import { DistributionModule } from './distribution/distribution.module';
       useFactory: (configService: ConfigService) => {
         return {
           type: 'mysql',
-          host: '44.211.175.32',
-          port: 3306,
-          username: 'root',
-          password: 'u9P@zL4&yS6xRt',
-          database: 'distribution',
+          host: configService.get('mysqlHost'),
+          port: configService.get('mysqlPort'),
+          username: configService.get('mysqlUsername'),
+          password: configService.get('mysqlPassword'),
+          database: configService.get('mysqlDatabase'),
           entities: [],
           autoLoadEntities: true,
           synchronize: true,

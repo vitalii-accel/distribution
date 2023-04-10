@@ -14,18 +14,13 @@ import { DistributionModule } from './distribution/distribution.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        console.log('host: ', configService.get('mysqlHost'));
-        console.log('port: ', configService.get('mysqlPort'));
-        console.log('username: ', configService.get('mysqlUsername'));
-        console.log('password: ', configService.get('mysqlPassword'));
-        console.log('database: ', configService.get('mysqlDatabase'));
         return {
           type: 'mysql',
-          host: configService.get('mysqlHost'),
-          port: configService.get('mysqlPort'),
-          username: configService.get('mysqlUsername'),
-          password: configService.get('mysqlPassword'),
-          database: configService.get('mysqlDatabase'),
+          host: '44.211.175.32',
+          port: 3306,
+          username: 'root',
+          password: 'u9P@zL4&yS6xRt',
+          database: 'distribution',
           entities: [],
           autoLoadEntities: true,
           synchronize: true,

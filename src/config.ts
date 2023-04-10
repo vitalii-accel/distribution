@@ -6,4 +6,5 @@ export const config = () => ({
   mysqlUsername: process.env.MYSQL_USERNAME,
   mysqlPassword: process.env.MYSQL_PASSWORD,
   mysqlDatabase: process.env.MYSQL_DATABASE,
+  mysqlHost: process.env.MYSQL_HOST,
 });

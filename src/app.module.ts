@@ -15,7 +15,7 @@ import { DistributionModule } from './distribution/distribution.module';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
-        host: 'localhost',
+        host: configService.get('mysqlHost'),
         port: configService.get('mysqlPort'),
         username: configService.get('mysqlUsername'),
         password: configService.get('mysqlPassword'),

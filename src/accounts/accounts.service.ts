@@ -1,10 +1,6 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
 // import { Account } from './account.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import axios, { AxiosInstance } from 'axios';
 import { AuthService } from '../auth/auth.service';
-import { GrantTypes } from '../enums/grant-types.enum';
 
 @Injectable()
 export class AccountsService {

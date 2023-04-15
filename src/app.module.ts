@@ -2,28 +2,21 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AccountsModule } from './accounts/accounts.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { config } from './config';
 import { DistributionModule } from './distribution/distribution.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
-    TypeOrmModule.forRootAsync({
+    MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => {
+      useFactory: async (configService: ConfigService) => {
+        console.log(configService.get<string>('mongodbUri'));
         return {
-          type: 'mysql',
-          host: configService.get('mysqlHost'),
-          port: configService.get('mysqlPort'),
-          username: configService.get('mysqlUsername'),
-          password: configService.get('mysqlPassword'),
-          database: configService.get('mysqlDatabase'),
-          entities: [],
-          autoLoadEntities: true,
-          synchronize: true,
+          uri: configService.get<string>('mongodbUri'),
         };
       },
       inject: [ConfigService],

@@ -28,7 +28,7 @@ export class AuthService {
         oauth,
       });
     } else {
-      await this.accountsService.update(account.id, {
+      await this.accountsService.update(account.kommoId, {
         domain: query.referer,
         oauth,
       });

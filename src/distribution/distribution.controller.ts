@@ -11,6 +11,6 @@ export class DistributionController {
     @Body('leads') leads: { add: LeadDistribution[] },
     @Body('account') account: AccountDistribution,
   ) {
-    await this.distributionService.distribution(account, leads.add);
+    // await this.distributionService.distribution(account, leads.add);
   }
 }

@@ -7,26 +7,7 @@ import { config } from './config';
 console.log();
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [config] }),
-    // TypeOrmModule.forRootAsync({
-    //   imports: [ConfigModule],
-    // useFactory: (configService: ConfigService) => {
-    //   return {
-    //     type: 'mysql',
-    //     host: configService.get('mysqlHost'),
-    //     port: configService.get('mysqlPort'),
-    //     username: configService.get('mysqlUsername'),
-    //     password: configService.get('mysqlPassword'),
-    //     database: configService.get('mysqlDatabase'),
-    //     entities: [],
-    //     autoLoadEntities: true,
-    //     synchronize: true,
-    //   };
-    // },
-    //   inject: [ConfigService],
-    // }),
-  ],
+  imports: [ConfigModule.forRoot({ isGlobal: true, load: [config] })],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -11,22 +11,22 @@ export class DistributionService {
 
   constructor(private accountService: AccountsService) {}
 
-  // async distribution(account: AccountDistribution, leads: LeadDistribution[]) {
-  //   const api = this.accountService.createConnector(Number(account.id));
-  //   const { data: result } = await api.patch(`/api/v4/leads/${leads[0].id}`, {
-  //     responsible_user_id: this.getManagerId(),
-  //   });
-  //   return result;
-  // }
-  //
-  // private getManagerId() {
-  //   const managersLength = this.managers.length;
-  //   const currentIndex = this.selectedIndex + 1;
-  //   if (currentIndex >= managersLength) {
-  //     this.selectedIndex = 0;
-  //     return this.managers[0];
-  //   }
-  //   this.selectedIndex = currentIndex;
-  //   return this.managers[currentIndex];
-  // }
+  async distribution(account: AccountDistribution, leads: LeadDistribution[]) {
+    const api = this.accountService.createConnector(Number(account.id));
+    const { data: result } = await api.patch(`/api/v4/leads/${leads[0].id}`, {
+      responsible_user_id: this.getManagerId(),
+    });
+    return result;
+  }
+
+  private getManagerId() {
+    const managersLength = this.managers.length;
+    const currentIndex = this.selectedIndex + 1;
+    if (currentIndex >= managersLength) {
+      this.selectedIndex = 0;
+      return this.managers[0];
+    }
+    this.selectedIndex = currentIndex;
+    return this.managers[currentIndex];
+  }
 }

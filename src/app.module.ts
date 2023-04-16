@@ -13,12 +13,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => {
-        console.log(configService.get<string>('mongodbUri'));
-        return {
-          uri: configService.get<string>('mongodbUri'),
-        };
-      },
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('mongodbUri'),
+      }),
       inject: [ConfigService],
     }),
     AccountsModule,

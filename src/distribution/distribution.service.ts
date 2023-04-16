@@ -16,6 +16,7 @@ export class DistributionService {
     const { data: result } = await api.patch(`/api/v4/leads/${leads[0].id}`, {
       responsible_user_id: this.getManagerId(),
     });
+    console.log(result);
     return result;
   }
 

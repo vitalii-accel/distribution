@@ -5,8 +5,8 @@ import { LeadDistribution } from '../interfaces/lead-distribution';
 
 @Injectable()
 export class DistributionService {
-  private managers = [9204711, 9413975];
-  // private managers = [9413975];
+  // private managers = [9204711, 9413975];
+  private managers = [9149919];
   private selectedIndex = 0;
 
   constructor(private accountService: AccountsService) {}

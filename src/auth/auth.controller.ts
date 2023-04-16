@@ -9,12 +9,6 @@ export class AuthController {
 
   @All('/callback')
   async callback(@Query() query: AuthCallbackQuery, @Res() res: Response) {
-    try {
-      console.log('callback', query, res);
-      return res.redirect(await this.authService.performCallback(query));
-    } catch (e) {
-      console.error(e);
-      return 'ok';
-    }
+    return res.redirect(await this.authService.performCallback(query));
   }
 }
